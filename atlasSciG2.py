@@ -114,12 +114,8 @@ if __name__ == "__main__":
     from threading import Lock
     i2cLock = Lock()
     ph = ph_oem(0x63, 1, i2cLock)
-  
-    while True:
-        try:
-            print(ph.read())
-            time.sleep(10)
+    print(ph.read())
+    ec = ec_oem(0x64, 1, i2cLock)
+    print(ec.read())
 
-        except:
-            print("Waiting for data")
-            time.sleep(10)
+
