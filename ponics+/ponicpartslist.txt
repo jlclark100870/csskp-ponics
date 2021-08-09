@@ -1,0 +1,16 @@
+Oiyagai 10Pcs Black US 3 Pins Power Socket Plug Panel Screw Mount Type Female Connectors Adapter
+Tnisesm 10 Pcs PCB Power Relay DC 5V Coil SPDT 5 Pins Mini Electromagnetic PCB Relay T78-5P-5V-BK
+PoiLee 2-Pin 5.08mm Pitch Male Female Plug-in PCB Screw Terminal Block Connector (Pack of 20set)
+eBoot 30 Pieces Photoresistor Photo Light Sensitive Resistor Light Dependent Resistor 5 mm GM5539 5539
+Bare Copper Wire/Choose : 10 Ga To 30 Ga (30 Ga -150 Ft Spool)
+DGZZI 2PCS DS18B20 Stainless Steel Encapsulated Temperature Sensor Waterproof Digital Temperature Probe 1 Meter for Arduino
+
+
+
+
+
+
+
+To auto start metaMaain.py
+
+crontab -e
