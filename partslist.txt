@@ -32,4 +32,13 @@ Double Sided PCB Board Kit, Prototype Boards for DIY Soldering and Electronic Pr
 
 
 
+Common commands:
+
+sudo crontab -e
+
+
+@reboot /home/pi/Desktop/myponic/metamain.py > /home/pi/logs/port 2>&1
+
+
+
 
