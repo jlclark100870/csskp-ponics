@@ -8,7 +8,10 @@ import RPi.GPIO as GPIO
 #---------------air temp fan control----------------------------
 
 def main():
-    val_check()
+    while True:
+        ph_check()
+        ec_check()
+        time.sleep(50)
 
 def checkd(set_name):
     p1 = readjson.details(set_name)
@@ -26,11 +29,10 @@ def checks(set_name):
 
 #schedule.every(30).seconds.do(checkd)
 
-def val_check():
+def ph_check():
     try:
     
-        #schedule.run_pending()
-        
+                
         ph_set =float(checks('PH'))
         ph_var =float(checkd('PH'))
         print(ph_set)
@@ -38,10 +40,8 @@ def val_check():
         if ph_set < ph_var:
             relaytest.phdoff()
             print('ph pump on')
-            #a = 1
-            time.sleep(.6)
+            time.sleep(float(checks('dosing')))
             relaytest.phdon()
-            #GPIO.cleanup()
         elif ph_set > ph_var:
             print('ph pump off')
             
@@ -55,6 +55,35 @@ def val_check():
         print("Could not convert data to an integer.")
     except:
         print("Unexpected error:", sys.exc_info()[1])
+
+def ec_check():
+    try:
+    
+        
+        ec_set =float(checks('EC'))
+        ec_var =float(checkd('EC'))
+        print(ec_set)
+        print(ec_var)
+        if ec_set > ec_var:
+            relaytest.ecuoff()
+            print('ec pump on')
+            time.sleep(float(checks('dosing')))
+            relaytest.ecuon()
+        elif ec_set < ec_var:
+            print('ec pump off')
+            
+            
+
+    except SystemExit:
+        print('oh snap')
+    except OSError as err:
+        print("OS error: {0}".format(err))
+    except ValueError:
+        print("Could not convert data to an integer.")
+    except:
+        print("Unexpected error:", sys.exc_info()[1])
+
+
 
     
 

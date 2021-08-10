@@ -13,10 +13,16 @@ import schedule
 import var_check
 import datetime
 import timer_script
+import poniclog
+from gpiozero import CPUTemperature
+
+cpu = CPUTemperature()
 
 
+relaytest.ecuon()
 relaytest.phdon()
 ph_timer1 = 0
+
 
 def checks(set_name):
     
@@ -30,19 +36,21 @@ def light_cont():
     	
 
 def timer_func():
-    var_check.val_check()
+
+    var_check.ph_check()
+    var_check.ec_check()
     
+def timer_ph(ph_timer):
     
-def timer_ph():
-    global ph_timer
+    print(ph_timer)
     global ph_timer1
-    
-    ph_timer = int(checks('ph_test_time'))
     if ph_timer != ph_timer1:
         schedule.every(ph_timer).minutes.do(timer_func)
+
         ph_timer1 = ph_timer
+
         
-sleep(20)
+#sleep(20)
 
 
 
@@ -90,13 +98,20 @@ while True:
 
                     #print the response text (the content of the requested file):
                     print(myobj)
-                    timer_ph()
-
+                    
+                    
+                    timer_ph(var_check.checks('ph_test_time'))
                     sleep(10)
+                    poniclog.logging.info(myobj)
+                    temp = cpu.temperature
+                    poniclog.logging.info(temp)
+                    print(temp)
                             
     
         except:
             seq=[]
+            poniclog.logging.exception("Exception in main()")
+
             print("Waiting for data")
 
                 

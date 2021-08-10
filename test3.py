@@ -31,6 +31,8 @@ def ecread():
 	dev.set_i2c_address(sensor_address)
 	dev.write("R")
 	time.sleep(1.5)
-	result = dev.read(4)
+	result = dev.read(8)
 	return(result)
 
+while True:
+	print(ecread())
