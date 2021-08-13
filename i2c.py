@@ -31,14 +31,13 @@ def ecread():
 	dev.set_i2c_address(sensor_address)
 	dev.write("R")
 	time.sleep(1.5)
-	usresult = dev.read(4)
-	try:
-		result = float(usresult)/100
-		print(result)
-	except:
-		result = 0.00
-		print("oops")
-	return(result)
+	result = dev.read(6)
+
+
+	bytestript = result.rstrip('\x00')
+	msread = float(bytestript)/1000
+	return(msread)
+
 """
 while True:
 	print(ecread())

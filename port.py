@@ -13,16 +13,15 @@ import schedule
 import var_check
 import datetime
 import timer_script
-import poniclog
-from gpiozero import CPUTemperature
+from imagecap import imcap
 
-cpu = CPUTemperature()
 
 
 relaytest.ecuon()
 relaytest.phdon()
 ph_timer1 = 0
 
+schedule.every(4).hours.do(imcap)
 
 def checks(set_name):
     
@@ -45,8 +44,9 @@ def timer_ph(ph_timer):
     print(ph_timer)
     global ph_timer1
     if ph_timer != ph_timer1:
+        schedule.clear()
         schedule.every(ph_timer).minutes.do(timer_func)
-
+        schedule.every(4).hours.do(imcap)
         ph_timer1 = ph_timer
 
         
@@ -101,18 +101,14 @@ while True:
                     
                     
                     timer_ph(var_check.checks('ph_test_time'))
-                    sleep(10)
-                    poniclog.logging.info(myobj)
-                    temp = cpu.temperature
-                    poniclog.logging.info(temp)
-                    print(temp)
-                            
-    
+                    sleep(30)  
         except:
             seq=[]
-            poniclog.logging.exception("Exception in main()")
-
+           
             print("Waiting for data")
+            print("Unexpected error:", sys.exc_info()[1])
+
+
 
                 
     
