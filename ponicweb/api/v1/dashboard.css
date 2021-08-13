@@ -1,0 +1,51 @@
+.sidebar {
+float: left;
+height: 100%;
+background-color: black;
+}
+.header {
+    width: 60%;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 45px;
+    
+    padding: 50px;
+    margin: 20px;
+    text-align: center;
+  }
+  .headersub {
+    font-family: "Lucida Console", Courier, monospace;
+    font-size: 20px;
+
+  }
+  .flex-container {
+    font-family: "Lucida Console", Courier, monospace;
+    width: 100%;
+    font-size: 28px;
+   justify-content: center;
+   float: left;
+  }
+  
+  .infobox {
+    float: left;
+    width: 20%;
+    text-align: center;
+  }
+  .infobox2 {
+    width: 20%;
+    float: left;
+    
+    text-align: center;
+  }
+  .infobox3 {
+    width: 20%;
+    float: left;
+   
+    text-align: center;
+  }
+  .status {
+    width: 20%;
+    float: left;
+   
+    text-align: center;
+  }
+ 
