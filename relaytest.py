@@ -1,14 +1,29 @@
 import RPi.GPIO as GPIO
 import time
+GPIO.setwarnings(False)
 
-in1 = 16
-in2 = 15
-in3 = 13
+
+in1 = 12
+in2 = 18
+in3 = 16
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(in1, GPIO.OUT)
 GPIO.setup(in2, GPIO.OUT)
 GPIO.setup(in3, GPIO.OUT)
+
+
+
+def main():
+    ecuon()
+    phdon()
+    lighton()
+    time.sleep(2)
+    lightoff()
+    time.sleep(2)
+
+
+
 
 
 def phdon():
@@ -28,3 +43,9 @@ def ecuon():
 
 def ecuoff():
     GPIO.output(in3, False)
+
+
+
+
+if __name__ == "__main__":
+    main()

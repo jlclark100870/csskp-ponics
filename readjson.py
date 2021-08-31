@@ -12,6 +12,7 @@ class details:
         self.name = name
     
     def myfunc(self):
+        print('details')
         response = urlopen(url)
         data_json = json.loads(response.read())
         b =data_json[self.name]
@@ -24,6 +25,7 @@ class contsets:
         self.name = name
         
     def myfunc(self):
+        print('contsets')
         response2 = urlopen(url2)
         data_json2 = json.loads(response2.read())
         b =data_json2[self.name]

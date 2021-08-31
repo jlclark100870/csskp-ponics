@@ -14,6 +14,7 @@ def main():
         time.sleep(50)
 
 def checkd(set_name):
+    print('checkd')
     p1 = readjson.details(set_name)
     myfunc_results = p1.myfunc()
     return myfunc_results
@@ -21,6 +22,7 @@ def checkd(set_name):
 
 
 def checks(set_name):
+    print('checks')
     p1 = readjson.contsets(set_name)
     myfunc_results = p1.myfunc()
     return myfunc_results
@@ -40,7 +42,7 @@ def ph_check():
         if ph_set < ph_var:
             relaytest.phdoff()
             print('ph pump on')
-            time.sleep(float(checks('dosing')))
+            time.sleep(float(checks('phdosing')))
             relaytest.phdon()
         elif ph_set > ph_var:
             print('ph pump off')
@@ -67,7 +69,7 @@ def ec_check():
         if ec_set > ec_var:
             relaytest.ecuoff()
             print('ec pump on')
-            time.sleep(float(checks('dosing')))
+            time.sleep(float(checks('ecdosing')))
             relaytest.ecuon()
         elif ec_set < ec_var:
             print('ec pump off')

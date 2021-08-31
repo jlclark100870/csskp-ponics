@@ -2,7 +2,9 @@
 import sys
 import readjson
 import relaytest
-import RPi.GPIO as GPIO
+
+relaytest.main()
+
 import requests
 import serial
 from time import sleep, time
@@ -17,17 +19,18 @@ from imagecap import imcap
 
 
 
-relaytest.ecuon()
-relaytest.phdon()
+relaytest.main()
+
+
 ph_timer1 = 0
 
 schedule.every(4).hours.do(imcap)
 
-def checks(set_name):
+#def checks(set_name):
     
-    p1 = readjson.contsets(set_name)
-    ph_clock = p1.myfunc()
-    return ph_clock
+    #p1 = readjson.contsets(set_name)
+    #ph_clock = p1.myfunc()
+    #return ph_clock
 
 def light_cont():
     global status
@@ -55,7 +58,7 @@ def timer_ph(ph_timer):
 
 
 
-ser = serial.Serial("/dev/ttyACM0", 9600, timeout=0)
+ser = serial.Serial("/dev/ttyUSB0", 9600, timeout=0)
 url = 'http://csskp.com/api/v1/machines/test.php'
 
 
