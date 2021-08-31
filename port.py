@@ -19,7 +19,6 @@ from imagecap import imcap
 
 
 
-relaytest.main()
 
 
 ph_timer1 = 0
@@ -53,65 +52,59 @@ def timer_ph(ph_timer):
         ph_timer1 = ph_timer
 
         
-#sleep(20)
 
 
 
 
-ser = serial.Serial("/dev/ttyUSB0", 9600, timeout=0)
+ser = serial.Serial("/dev/ttyUSB0", 9600)
 url = 'http://csskp.com/api/v1/machines/test.php'
 
 
-
 while True:
-    
+
+
     light_cont()
+    
     ser.reset_input_buffer()
     seq=[]
     timeout = time() + 5   # 5 minutes from now
     while time() < timeout:
         try:
-            
-            schedule.run_pending() 
-            for c in ser.read():
-                seq.append(chr(c)) #convert from ANSII
-                if chr(c) == '#':
-                    now=datetime.datetime.now()                 
-                    tdt= time()
-                    joined_seq = ''.join(str(v) for v in seq) #Make a string from array
-                    rawData = joined_seq[1:-1].split(',')
-                    
-                    data = {                        
-                        'humidity' : float(rawData[0]),
-                        'air_temp' : float(rawData[1]),
-                        'lightSensor' : int(rawData[2]),
-                        'water_temp' : float(rawData[3]),
+   
+            schedule.run_pending()
+
+
+            tdt= time()
+            data = ser.readline()
+    
+            data = data.decode().strip('\r\n')
+            rawData = data.split(',')
+
+            data = {                        
+                        'humidity' : float(rawData[1]),
+                        'air_temp' : float(rawData[2]),
+                        'lightSensor' : int(rawData[3]),
+                        'water_temp' : float(rawData[4]),
                         'time' : tdt,
                         'PH' : float(i2c.phread()),
 			'EC' : float(i2c.ecread()),
                         'grow_light' : status
                         }
-                                        
+
+            myobj = json.dumps(data)
                     
 
-                    myobj = json.dumps(data)
-                    
+            x = requests.post(url, myobj)
 
-                    x = requests.post(url, myobj)
+            #print the response text (the content of the requested file):
+            print(myobj)
+                    
+                    
+            timer_ph(var_check.checks('ph_test_time'))
+            sleep(10)  
 
-                    #print the response text (the content of the requested file):
-                    print(myobj)
-                    
-                    
-                    timer_ph(var_check.checks('ph_test_time'))
-                    sleep(30)  
         except:
             seq=[]
            
             print("Waiting for data")
             print("Unexpected error:", sys.exc_info()[1])
-
-
-
-                
-    
