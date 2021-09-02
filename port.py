@@ -16,10 +16,8 @@ import var_check
 import datetime
 import timer_script
 from imagecap import imcap
-
-
-
-
+import logging
+import poniclog
 
 ph_timer1 = 0
 
@@ -51,13 +49,25 @@ def timer_ph(ph_timer):
         schedule.every(4).hours.do(imcap)
         ph_timer1 = ph_timer
 
+
+
+
         
+######################################setting url values
+
+try:
+
+    ser = serial.Serial("/dev/ttyUSB0", 9600)
+    url = 'http://csskp.com/api/v1/machines/test.php'
+
+except:
+
+    
+    logging.error('fuck', exc_info=True)
+##################################################end setting url values
 
 
 
-
-ser = serial.Serial("/dev/ttyUSB0", 9600)
-url = 'http://csskp.com/api/v1/machines/test.php'
 
 
 while True:
@@ -98,7 +108,7 @@ while True:
 
             #print the response text (the content of the requested file):
             print(myobj)
-                    
+            logging.info(myobj)        
                     
             timer_ph(var_check.checks('ph_test_time'))
             sleep(10)  
@@ -108,3 +118,4 @@ while True:
            
             print("Waiting for data")
             print("Unexpected error:", sys.exc_info()[1])
+            logging.error('Exception occured', exc_info=True)

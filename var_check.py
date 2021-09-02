@@ -4,6 +4,8 @@ import readjson
 import relaytest
 #import schedule
 import RPi.GPIO as GPIO
+import logging
+import poniclog
 
 #---------------air temp fan control----------------------------
 
@@ -42,11 +44,13 @@ def ph_check():
         if ph_set < ph_var:
             relaytest.phdoff()
             print('ph pump on')
+            logging.info('PH pump on')
             time.sleep(float(checks('phdosing')))
             relaytest.phdon()
         elif ph_set > ph_var:
             print('ph pump off')
-            
+            logging.info('PH pump off')
+
             
 
     except SystemExit:
