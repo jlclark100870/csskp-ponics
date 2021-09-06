@@ -1,0 +1,11 @@
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 2, "water_temp": 23.81, "time": 1630905126.8666294, "PH": 6.4, "EC": 2.771, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 3, "water_temp": 23.75, "time": 1630905142.819337, "PH": 6.4, "EC": 2.771, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 1, "water_temp": 23.75, "time": 1630905158.9962022, "PH": 6.4, "EC": 2.771, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 2, "water_temp": 23.75, "time": 1630905175.5189908, "PH": 6.4, "EC": 2.771, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 1, "water_temp": 23.75, "time": 1630905191.381516, "PH": 6.4, "EC": 2.771, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 2, "water_temp": 23.75, "time": 1630905207.6243174, "PH": 6.4, "EC": 2.771, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 3, "water_temp": 23.75, "time": 1630905223.7653081, "PH": 6.4, "EC": 2.771, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 2, "water_temp": 23.75, "time": 1630905240.0059326, "PH": 6.4, "EC": 2.772, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.3, "air_temp": 24.2, "lightSensor": 1, "water_temp": 23.75, "time": 1630905256.1548705, "PH": 6.4, "EC": 2.772, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 2, "water_temp": 23.75, "time": 1630905272.5795345, "PH": 6.4, "EC": 2.772, "grow_light": "Grow Light off"}
+INFO:root:{"humidity": 79.2, "air_temp": 24.2, "lightSensor": 1, "water_temp": 23.75, "time": 1630905288.6587963, "PH": 6.4, "EC": 2.771, "grow_light": "Grow Light off"}

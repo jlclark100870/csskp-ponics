@@ -2,7 +2,6 @@ import time
 import sys
 import readjson
 import relaytest
-#import schedule
 import RPi.GPIO as GPIO
 import logging
 import poniclog
@@ -31,7 +30,7 @@ def checks(set_name):
 
 
 
-#schedule.every(30).seconds.do(checkd)
+
 
 def ph_check():
     try:
@@ -41,12 +40,24 @@ def ph_check():
         ph_var =float(checkd('PH'))
         print(ph_set)
         print(ph_var)
+
+
         if ph_set < ph_var:
             relaytest.phdoff()
-            print('ph pump on')
+            print('ph down pump on')
             logging.info('PH pump on')
             time.sleep(float(checks('phdosing')))
             relaytest.phdon()
+
+
+        elif ph_var < 6:
+            relaytest.ecuoff()
+            print('ph up pump on')
+            logging.info('PH up pump on')
+            time.sleep(6)
+            relaytest.ecuon()
+
+
         elif ph_set > ph_var:
             print('ph pump off')
             logging.info('PH pump off')
@@ -73,7 +84,7 @@ def ec_check():
         if ec_set > ec_var:
             relaytest.ecuoff()
             print('ec pump on')
-            time.sleep(float(checks('ecdosing')))
+            #time.sleep(float(checks('ecdosing')))
             relaytest.ecuon()
         elif ec_set < ec_var:
             print('ec pump off')
