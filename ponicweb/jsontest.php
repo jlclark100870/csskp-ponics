@@ -3,7 +3,8 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $EC = test_input($_POST["EC"]);
     $PH = test_input($_POST["PH"]);
-    $dosing = test_input($_POST["dosing"]);
+    $phdosing = test_input($_POST["phdosing"]);
+    $ecdosing = test_input($_POST["ecdosing"]);
     $daylength = test_input($_POST["daylength"]);
     $fan_temp_on = test_input($_POST["fan_temp_on"]);
     $fan_temp_off = test_input($_POST["fan_temp_off"]);
@@ -12,7 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $myObj->EC =(float) $EC;
     $myObj->PH =(float) $PH;
-    $myObj->dosing =(float) $dosing;
+    $myObj->phdosing =(float) $phdosing;
+    $myObj->ecdosing =(float) $ecdosing;
     $myObj->daylength= $daylength;
     $myObj->fan_temp_on=(int) $fan_temp_on;
     $myObj->fan_temp_off= (int)$fan_temp_off;
@@ -97,9 +99,11 @@ p {
 <input type="text" id="PH" name="PH" value=<?echo($array[PH]);?>><br>
 
 
-<label for="dosing">EC Dosing:</label><br>
-<input type="text" id="dosing" name="dosing" value=<?echo($array[dosing]);?>><br>
+<label for="phdosing">PH Dosing:</label><br>
+<input type="text" id="phdosing" name="phdosing" value=<?echo($array[phdosing]);?>><br>
 
+<label for="ecdosing">EC Dosing:</label><br>
+<input type="text" id="ecdosing" name="ecdosing" value=<?echo($array[ecdosing]);?>><br>
 
 <label for="fan_temp_on">fan_temp_on Celsius:</label><br>
 <input type="text" id="fan_temp_on" name="fan_temp_on" value=<?echo($array[fan_temp_on]);?>><br>

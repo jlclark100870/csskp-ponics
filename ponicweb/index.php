@@ -8,37 +8,57 @@ date_default_timezone_set("America/Chicago");
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta http-equiv=“Expires” content=”-1″>
+
 <meta http-equiv="refresh" content="10">
 <style>
-body {
-  background-color: lightblue;
+body { background-color:#555888; font-family:sans-serif; color:#fff; font-size:30px; text-align:center }
+code { display:inline-block; max-width:600px;  padding:80px 0 0; line-height:1.5; font-family:monospace; color:#ccc }
+
+.sc-gauge  { width:200px; height:200px; margin:200px auto; }
+.sc-background { position:relative; height:100px; margin-bottom:10px; background-color:#fff; border-radius:150px 150px 0 0; overflow:hidden; text-align:center; }
+.sc-mask { position:absolute; top:20px; right:20px; left:20px; height:80px; background-color:#555888; border-radius:150px 150px 0 0 }
+.sc-percentage { position:absolute; top:100px; left:-200%; width:400%; height:400%; margin-left:100px; background-color:#00aeef; }
+.sc-percentage { transform:rotate(158deg); transform-origin:top center; }
+.sc-min { float:left; }
+.sc-max { float:right; }
+.sc-value { position:absolute; top:50%; left:0; width:100%;  font-size:48px; font-weight:700 }
+
+
+/* css for ph gauge */
+
+.sc-gaugeph  { width:200px; height:200px; margin:200px auto; }
+.sc-maskph { position:absolute; top:20px; right:20px; left:20px; height:80px; background-color:#555888; border-radius:150px 150px 0 0 }
+
+.sc-percentageph { position:absolute; top:100px; left:-200%; width:400%; height:400%; margin-left:100px; background-color:#00aeef; }
+.sc-percentageph { transform:rotate(90deg); transform-origin:top center; }
+
+
+
+
+/*end ph values*/
+
+/* css for ph gauge */
+
+.sc-gaugeph  { width:200px; height:200px; margin:200px auto; }
+.sc-maskph { position:absolute; top:20px; right:20px; left:20px; height:80px; background-color:#555888; border-radius:150px 150px 0 0 }
+
+.sc-percentageph { position:absolute; top:100px; left:-200%; width:400%; height:400%; margin-left:100px; background-color:#00aeef; }
+.sc-percentageph { transform:rotate(90deg); transform-origin:top center; }
+
+
+.rotateimg180 {
+  -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
-h1 {
-  color: white;
-  text-align: center;
-}
-a {
-  color: white;
-  text-align: center;
-}
+/*end ph values*/
 
-p {
-  font-family: verdana;
-  font-size: 40px;
-}
-.column {
-  background-color: blue;
-  float: left;
-  width: 33.33%;
-}
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 </style>
 </head>
 <body>
@@ -80,37 +100,53 @@ echo($array[grow_light]);
 
 
 ?>
-
-
-
-</p>
-<?php
-        if(array_key_exists('button1', $_POST)) {
-            button1();
-        }
-        else if(array_key_exists('button2', $_POST)) {
-            button2();
-        }
-        function button1() {
-            echo "This is Button1 that is selected";
-        }
-        function button2() {
-            echo "This is Button2 that is selected";
-        }
-    ?>
-  
-    <form method="post">
-        <input type="submit" name="button1"
-                class="button" value="PH UP" />
-          
-        <input type="submit" name="button2"
-                class="button" value="PH DOWN" />
-    </form>
-<div class="row">
-  <div class="column" <?php echo $style; ?> >This is div</div>
-  <div class="column">PH Pump down</div>
-  <div class="column">fan</div>
+<!--
+<div class="sc-gauge">
+water tempature
+    <div class="sc-background">
+      <div class="sc-percentage"></div>
+      <div class="sc-mask"></div>
+      <span class="sc-value"><?echo($water)?></span>
+    </div>
+    <span class="sc-min">0</span>
+    <span class="sc-max">120</span>
 </div>
-<img src="uploads/name.jpg" alt="hydroponic plant" width="500" height="600">
+<div class="sc-gauge">
+air tempature
+    <div class="sc-background">
+      <div class="sc-percentage"></div>
+      <div class="sc-mask"></div>
+      <span class="sc-value"><?echo($air)?></span>
+    </div>
+    <span class="sc-min">0</span>
+    <span class="sc-max">120</span>
+</div>
+<div class="sc-gauge">
+EC
+    <div class="sc-background">
+      <div class="sc-percentage"></div>
+      <div class="sc-mask"></div>
+      <span class="sc-value"><?echo($array[EC]);?></span>
+    </div>
+    <span class="sc-min">0</span>
+    <span class="sc-max">120</span>
+</div>
+<div class="sc-gaugeph">
+PH
+    <div class="sc-background">
+      <div class="sc-percentageph"></div>
+      <div class="sc-maskph"></div>
+      <span class="sc-value"><?echo($array[PH]);?></span>
+    </div>
+    <span class="sc-min">0</span>
+    <span class="sc-max">14</span>
+</div>
+-->
+</p>
+
+
+  
+   
+<img src="uploads/name.jpg" alt="hydroponic plant" width="300" height="300" class="rotateimg180">
 </body>
 </html>
