@@ -4,7 +4,7 @@ import readjson
 import relaytest
 
 relaytest.main()
-
+import temp
 import requests
 import serial
 from time import sleep, time
@@ -80,9 +80,9 @@ while True:
     timeout = time() + 5   # 5 minutes from now
     while time() < timeout:
         try:
-   
+            
             schedule.run_pending()
-
+            temp.heat()
 
             tdt= time()
             data = ser.readline()
@@ -102,16 +102,26 @@ while True:
                         }
 
             myobj = json.dumps(data)
+            
+            f = open("/home/pi/Desktop/myponic/detail.json", "w")
+            f.write(myobj)
+            f.close()
+            try:
                     
 
-            x = requests.post(url, myobj)
+                x = requests.post(url, myobj)
 
-            #print the response text (the content of the requested file):
-            print(myobj)
-            logging.info(myobj)        
+                #print the response text (the content of the requested file):
+                print(myobj)
+                logging.info(myobj)        
                     
-            timer_ph(var_check.checks('ph_test_time'))
-            sleep(10)  
+                timer_ph(var_check.checks('ph_test_time'))
+                sleep(10)
+            except:
+                  print("connection failed")
+                  print("Unexpected error:", sys.exc_info()[1])
+                  logging.error('Exception occured', exc_info=True)
+
 
         except:
             seq=[]

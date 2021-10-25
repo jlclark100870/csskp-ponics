@@ -3,25 +3,32 @@ import time
 GPIO.setwarnings(False)
 
 
-in1 = 12
-in2 = 18
-in3 = 16
+in1 = 32
+in2 = 12
+in3 = 18
+in4 = 16
+in5 = 8
+
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(in1, GPIO.OUT)
 GPIO.setup(in2, GPIO.OUT)
 GPIO.setup(in3, GPIO.OUT)
-
-
+GPIO.setup(in4, GPIO.OUT)
+GPIO.setup(in5, GPIO.OUT)
 
 def main():
     ecuon()
     phdon()
-    lighton()
+    phuon()
+    lighton()  
+    tempoff()  
     time.sleep(2)
     lightoff()
-    time.sleep(2)
 
+   
+ 
+ 
 
 
 
@@ -38,11 +45,26 @@ def lighton():
 def lightoff():
     GPIO.output(in2, False)
 
-def ecuon():
+def phuon():
     GPIO.output(in3, True)
 
-def ecuoff():
+def phuoff():
     GPIO.output(in3, False)
+
+def tempon():
+    GPIO.output(in4, False)
+
+def tempoff():
+    GPIO.output(in4, True)
+
+def ecuon():
+    GPIO.output(in5, True)
+
+def ecuoff():
+    GPIO.output(in5, False)
+
+
+
 
 
 
