@@ -9,10 +9,13 @@ import poniclog
 #---------------air temp fan control----------------------------
 
 def main():
+    relaytest.phdon()
+    relaytest.phuon()
+
     while True:
-        ph_check()
+        #ph_check()
         ec_check()
-        time.sleep(50)
+        time.sleep(15)
 
 def checkd(set_name):
     print('checkd')
@@ -45,17 +48,17 @@ def ph_check():
         if ph_set < ph_var:
             relaytest.phdoff()
             print('ph down pump on')
-            logging.info('PH pump on')
+            logging.info('PH down pump on')
             time.sleep(float(checks('phdosing')))
             relaytest.phdon()
 
 
         elif ph_var < 6:
-            relaytest.ecuoff()
+            relaytest.phuoff()
             print('ph up pump on')
             logging.info('PH up pump on')
             time.sleep(6)
-            relaytest.ecuon()
+            relaytest.phuon()
 
 
         elif ph_set > ph_var:
@@ -84,7 +87,7 @@ def ec_check():
         if ec_set > ec_var:
             relaytest.ecuoff()
             print('ec pump on')
-            #time.sleep(float(checks('ecdosing')))
+            time.sleep(float(checks('ecdosing')))
             relaytest.ecuon()
         elif ec_set < ec_var:
             print('ec pump off')

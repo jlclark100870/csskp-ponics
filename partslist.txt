@@ -34,6 +34,9 @@ Double Sided PCB Board Kit, Prototype Boards for DIY Soldering and Electronic Pr
 
 Common commands:
 
+user pi
+password temppwd
+
 sudo crontab -e
 
 
