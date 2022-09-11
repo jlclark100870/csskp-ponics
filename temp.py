@@ -18,14 +18,36 @@ def heat():
 
     if float(temp) < float(tempset):
         relaytest.tempon()
-        print("on")
-    if float(temp) > float(tempset):
+        heater_status = 'heater on'
+    elif float(temp) >= float(tempset):
         relaytest.tempoff()
-        print("off")
+        heater_status = 'heater off'
+    else:
+        relaytest.tempoff()
+        heater_status = 'heater off'
 
-    time.sleep(30)
+    return(heater_status)
+        
 
+    
+def humid():
+    humidset = var_check.checks("humidity")
+    humid = var_check.checkd('humidity')
+    print(humid)
+   
 
+    if float(humid) > float(humidset):
+        relaytest.humidon()       
+        humidity_status = "on"
+
+    elif float(humid) <= float(humidset):
+        relaytest.humidoff()       
+        humidity_status = "off"
+    else:
+        relaytest.humidoff()       
+        humidity_status = "off"
+
+    return(humidity_status)
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,32 @@
+{
+    "plantdate": "08\/01\/2022",
+    "phdosing": 5,
+    "ecdosing": 5,
+    "seeding": {
+        "EC": 6.5,
+        "PH": 7,
+        "daylength": "09:00:00",
+        "fan_temp_on": 26,
+        "fan_temp_off": 23,
+        "daycycle": "09:01:00",
+        "ph_test_time": 100
+    },
+    "bloom": {
+        "EC": 5.5,
+        "PH": 8,
+        "daylength": "09:00:01",
+        "fan_temp_on": 26,
+        "fan_temp_off": 23,
+        "daycycle": "13:00:00",
+        "ph_test_time": 100
+    },
+    "mature": {
+        "EC": 7,
+        "PH": 9,
+        "daylength": "09:00:00",
+        "fan_temp_on": 26,
+        "fan_temp_off": 23,
+        "daycycle": "18:00:00",
+        "ph_test_time": 100
+    }
+}
